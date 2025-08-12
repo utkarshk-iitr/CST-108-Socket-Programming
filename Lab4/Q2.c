@@ -23,7 +23,7 @@ int main(){
     printf("%-15s %-15s %-10s %-10s\n","Source IP","IP Hdr Len","ICMP Type","ICMP Code");
     printf("--------------------------------------------------------\n");
     
-    while (1){
+    while(1){
         int packet_size = recvfrom(raw_socket,buffer,sizeof(buffer),0,(struct sockaddr*)&source_addr,&addr_len);
         if(packet_size<0){
             perror("Failed to receive packet");
