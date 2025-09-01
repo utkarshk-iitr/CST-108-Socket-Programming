@@ -35,6 +35,6 @@ int main(){
     printf("Parent: Sending signal to child\n");
     TELL_CHILD(pid);
     wait(NULL);
-    printf("Parent: Signal sent to child, exiting\n");
+    printf("Parent: Signal already sent to child, exiting\n");
     return 0;
 }
