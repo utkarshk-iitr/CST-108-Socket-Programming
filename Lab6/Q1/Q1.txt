@@ -1,7 +1,0 @@
-(a) openssl rand -hex 8 > des_key
-(b) echo "This is my new file it needs to replaced by original Appendix-I" > Alice.txt
-(c) openssl des3 -e -in Alice.txt -out Alice.enc -K $(cat des_key)$(cat des_key)$(cat des_key) -iv 0000000000000000
-(d) openssl des3 -d -in Alice.enc -out Alice.dec -K $(cat des_key)$(cat des_key)$(cat des_key) -iv 0000000000000000
-(e) diff Alice.txt Alice.dec
-
-Yes both the files 'Alice.txt' and 'Alice.dec' are same.
