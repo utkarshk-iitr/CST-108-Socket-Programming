@@ -25,9 +25,9 @@ string encode(vector<unsigned char>& data){
     }
     
     string formatted_res;
-    for(int i=0;i<res.size();i++) {
+    for(int i=0;i<res.size();i++){
         formatted_res.push_back(res[i]);
-        if((i+1)%64==0 && i!=res.size()-1){
+        if((i+1)%64==0){
             formatted_res.push_back('\n');
         }
     }
@@ -74,24 +74,13 @@ int main(int argc,char** argv){
         input.insert(input.end(),buf,buf+cin.gcount());
 
     if (mode=="-e"){
-        cout<<encode(input)<<endl;
+        cout<<encode(input);
         return 0;
     } 
     
     else if(mode=="-d"){
         string s(input.begin(),input.end());
-        string cleaned;
-
-        for(auto c: s){
-            if(!isspace((unsigned char)c)) 
-                cleaned.push_back(c);
-        }
-
-        size_t eq = cleaned.find('=');
-        if (eq!=string::npos)
-            cleaned = cleaned.substr(0,eq);
-
-        vector<unsigned char> out = decode(cleaned);
+        vector<unsigned char> out = decode(s);
         for(auto c:out) cout<<c;
     } 
     
