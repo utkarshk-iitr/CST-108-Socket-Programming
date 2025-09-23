@@ -1,0 +1,9 @@
+The output shows a format string warning because printf("%signal mask set\n") 
+uses %s without providing the required char * argument, causing undefined behavior.
+
+The program blocks SIGCHLD and SIGHUP signals, then sends SIGCHLD to itself 
+which becomes pending. When sigsuspend(&zero) temporarily unblocks all signals, 
+the pending SIGCHLD is delivered, executing the handler function 
+
+After the handler completes, sigsuspend returns and the original signal mask is restored,
+so the final sigismember checks show both "SIGHUP" and "SIGCHLD" are still blocked in the signal mask. 

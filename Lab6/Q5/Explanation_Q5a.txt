@@ -1,0 +1,8 @@
+On an Intel machine, it is of little-endian type and the short integer port = 5120 has the hexadecimal value 0x1400.
+Which in memory is stored least significant byte first as 00 14, hence the first loop prints 0 14. 
+
+The function htons converts this host-order value into network byte order (big-endian), so it becomes 0x0014. 
+When this new value is stored in memory on a little-endian system, it appears as 14 00, which the second loop prints as 14 0.
+
+Thus, the first output shows the original little-endian representation of 0x1400,
+and the second shows the byte-swapped result after conversion to network order.

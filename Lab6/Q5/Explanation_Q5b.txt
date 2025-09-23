@@ -1,0 +1,14 @@
+The output shows a format string warning because printf("%signal mask set\n") 
+uses %s without providing a corresponding char* argument, 
+causing undefined behavior that typically displays garbage characters.
+
+It then sends a SIGCHLD signal to itself but SIGCHLD is blocked, 
+it doesn't get delivered immediately and instead becomes a pending signal.
+
+The program then unblocks all signals by sigsuspend(&zero) and pauses the program,
+waiting for a signal to be delivered. SIGCHLD is now ignored as its default action.
+
+The sigsuspend function is designed to return only after a signal is caught and its handler function finishes executing. 
+Since the default action for SIGCHLD is to be ignored, no handler is ever executed.
+
+Thus the program gets stuck indefinitely.
