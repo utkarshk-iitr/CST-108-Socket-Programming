@@ -1,0 +1,6 @@
+This is a sample plain text file for testing.
+It contains multiple lines of text data.
+Numbers: 1234567890
+Mixed content for comprehensive testing.
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
