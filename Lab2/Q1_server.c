@@ -68,7 +68,7 @@ void str_echo(int sockfd){
     }
     
     filename[n-1]='\0';
-    printf("Child %d: Client requested file: %s\n", getpid(), filename);
+    printf("Child %d: Client requested file: %s\n",getpid(),filename);
 
     if((fp=fopen(filename,"r"))==NULL) {
         strcpy(line,"ERROR: File not found\n");
